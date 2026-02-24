@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  {{ post.title }}
+{% endblock %}
+{% block content %}
+  <article class="post-detail">
+    <header>
+      <h1>{{ post.title }}</h1>
+      <p>
+        <small>By {{ post.author }} — {{ post.published_date|date:'F j, Y' }}</small>
+      </p>
+    </header>
+    <section>{{ post.content|linebreaks }}</section>
+    <footer>
+      <p>
+        Tags:{% for tag in post.tags.all %}
+          {{ tag.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          None
+        {% endfor %}
+      </p>
+    </footer>
+  </article>
+{% endblock %}

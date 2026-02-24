@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+My Blog
+{% endblock %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blogapp/index.css" %}">
+{% endblock %}
+{% block content %}
+<header class="main-navigation">
+<h1><a href="">Casey Jones's Blog</a></h1>
+<nav>
+<a href="{% url 'posts-page' %}">All Posts</a>
+</nav>
+</header>
+<section class="welcome">
+<header>
+<img src="{% static "blogapp/images/otter.jpg"%}" alt="">
+<h2>Casey Jones Blog</h2>
+</header>
+<p>Welcome to my corner of the internet where I share my projects.</p>
+</section>
+<section class="latest-posts">
+<h2>My latest thoughts</h2>
+<ul>
+{% for post in posts %}
+<li>
+<article class='post'>
+{% comment %} <a href="{% url 'post-details' post.slug %}"> {% endcomment %}
+<img src='{% static "blogapp/images/otter.jpg" %}' alt='post image'>
+<div class='post__content'>
+<h3>{{ post.title }}</h3>
+<p>{{ post.content|truncatechars:150 }}</p>
+<small>By {{ post.author }} — {{ post.published_date|date:"F j, Y" }}</small>
+</div>
+</a>
+</article>
+</li>
+{% empty %}
+<li>No posts yet.</li>
+{% endfor %}
+</ul>
+</section>
+<section class='about'>
+<h2>What I Do</h2>
+<p>I am a developer and a teacher, always looking for new problems.</p>
+<p>My goal is to get better every day through building and sharing.</p>
+</section>
+{% endblock %}

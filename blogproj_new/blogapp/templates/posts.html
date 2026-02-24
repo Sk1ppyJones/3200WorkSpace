@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  All Posts
+{% endblock %}
+{% block content %}
+  <section class="all-posts">
+    <h2>All Posts</h2>
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{% url 'post-details' post.slug %}">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content|truncatechars:200 }}</p>
+            <small>{{ post.published_date|date:'F j, Y' }} — {{ post.author }}</small>
+          </a>
+        </li>
+      {% empty %}
+        <li>No posts found.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
