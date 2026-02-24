@@ -1,0 +1,33 @@
+* {
+    text-align: center;
+    background-color: bisque;
+}
+
+body {
+    margin: 0;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.header-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.header-list>li {
+    margin: 0;
+}

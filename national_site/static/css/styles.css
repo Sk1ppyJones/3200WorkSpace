@@ -1,0 +1,15 @@
+* {
+    background-color: rgb(181, 238, 181);
+}
+
+.holiday-item {
+    color: rgb(67, 67, 189);
+    font-weight: bold;
+}
+
+nav>ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

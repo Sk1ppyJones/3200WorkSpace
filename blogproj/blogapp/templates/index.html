@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blogapp/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <h1>Home Page</h1>
+
+  <section class="welcome">
+    <header>
+      <img src="" alt="Me" />
+      <h2>Skippys' Blog</h2>
+    </header>
+    <p>Welcome to My Blog!</p>
+  </section>
+  <section class="latest-posts">
+    <h2>My Latest Posts!</h2>
+    <ul>
+      <li>
+        <article class="post">
+          {% comment 'Reminder DOuble underscore' %}
+          {% endcomment %}
+          <a href="">
+            <div class="post_content">
+              <img src="" alt="" />
+              <h3>Planning a Blog</h3>
+              <p>The steps to planning out a blog</p>
+            </div>
+          </a>
+        </article>
+      </li>
+    </ul>
+  </section>
+  <section class="about">
+    <h2>What I do!</h2>
+    <p>Student in Computer Science</p>
+    <p>Aspiring Content Creator</p>
+  </section>
+{% endblock %}

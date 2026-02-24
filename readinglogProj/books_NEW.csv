@@ -1,0 +1,11 @@
+title,rating,is_read,genre,authors,bio,website
+The Great Gatsby,5,true,Classic,F. Scott Fitzgerald,American novelist of the Jazz Age.,http://fitzgerald.com
+Good Omens,5,true,Fantasy,"Neil Gaiman, Terry Pratchett","Collaborative work by fantasy masters.",http://neilgaiman.com
+The Shining,4,false,Horror,Stephen King,Master of modern horror and suspense.,http://stephenking.com
+Norse Mythology,4,true,Mythology,Neil Gaiman,Writer of short fiction and graphic novels.,http://neilgaiman.com
+The Talisman,4,false,Fantasy,"Stephen King, Peter Straub","A collaborative dark fantasy epic.",http://peterstraub.net
+Foundation,5,true,Sci-Fi,Isaac Asimov,Prolific writer of science and hard sci-fi.,http://asimov.com
+The Da Vinci Code,3,true,Thriller,Dan Brown,Author of conspiracy-themed thrillers.,http://danbrown.com
+Sleeping Beauties,4,false,Horror,"Stephen King, Owen King","A father-son literary collaboration.",http://owenking.com
+I Robot,4,true,Sci-Fi,Isaac Asimov,Creator of the Three Laws of Robotics.,http://asimov.com
+Ocean at the End of the Lane,5,true,Fantasy,Neil Gaiman,Modern mythmaker and storyteller.,http://neilgaiman.com

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ month }}'s Holidays
+{% endblock %}
+
+{% block content %}
+  <h1>Holidays in {{ month }}</h1>
+
+  {% if holidays %}
+    <ol>
+      {% for holiday in holidays %}
+        <li class="holiday-item">{{ holiday }}</li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>Sorry, No Holidays Found! D:</p>
+  {% endif %}
+
+  <hr />
+  <a href="{% url 'index' %}">Back To Home</a>
+{% endblock %}

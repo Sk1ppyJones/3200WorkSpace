@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ title }} - Details
+{% endblock %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <h2>Author: {{ author }}</h2>
+  {% if series_number %}
+    <h3>Series Entry: #{{ series_number }}</h3>
+  {% endif %}
+  {% if summary %}
+    {{ summary }}
+  {% endif %}
+
+  <section>
+    <p>Rating: {{ rating }}</p>
+    <p>
+      Read Status:{% if is_read %}
+        Completed on {{ date_read }}
+      {% else %}
+        currently unread
+      {% endif %}
+    </p>
+  </section>
+
+  <p>
+    <a href="{% url 'home' %}">Back to Library</a>
+  </p>
+  <ul>
+    {% for book in books %}
+      <li>{{ book.title }} by {{ book.author }} ({{ book.rating }}/5)</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
