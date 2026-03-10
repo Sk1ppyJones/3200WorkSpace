@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     {% block css_files %}
+      <link rel="stylesheet" href="{% static 'blogapp/index.css' %}" />
+      <link rel="stylesheet" href="{% static 'blogapp/post.css' %}" />
+      <link rel="stylesheet" href="{% static 'blogapp/post-detail.css' %}" />
+      <link rel="stylesheet" href="{% static 'blogapp/all-posts.css' %}" />
     {% endblock %}
     <title>
       {% block title %}
@@ -14,7 +18,6 @@
     </title>
   </head>
   <body>
-    {% include 'includes/_header.html' %}
     {% block content %}
       Base Template
     {% endblock %}
