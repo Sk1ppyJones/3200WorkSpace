@@ -3,27 +3,38 @@ from django.http import HttpResponseRedirect
 from .forms import ReviewForm
 from django.views import View
 from .models import Review
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView
 # Create your views here.
 
 
-class ReviewView(View):
-    def get(self, request):
-        form = ReviewForm()
-        return render(request, 'reviews/reviews.html', {
-            "form": form
-        })
+class ReviewView(CreateView):
+    model = Review
+    template_name = 'reviews/reviews.html'
+    form_class = ReviewForm  # Only needed bc of customizations
+    success_url = '/submit/'
 
-    def post(self, request):
-        form = ReviewForm(request.POST)
+    # FormView
+    # def form_valid(self, form):
+    #     form.save()
+    #     return super().form_valid(form)
 
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/submit/')
-        else:
-            return render(request, 'reviews/reviews.html', {
-                "form": form
-            })
+    # View
+    # def get(self, request):
+    #     form = ReviewForm()
+    #     return render(request, 'reviews/reviews.html', {
+    #         "form": form
+    #     })
+
+    # def post(self, request):
+    #     form = ReviewForm(request.POST)
+
+    #     if form.is_valid():
+    #         form.save()
+    #         return HttpResponseRedirect('/submit/')
+    #     else:
+    #         return render(request, 'reviews/reviews.html', {
+    #             "form": form
+    #         })
 
 
 class SubmissionView(TemplateView):

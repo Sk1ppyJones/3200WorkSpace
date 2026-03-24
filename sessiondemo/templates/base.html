@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      {% block title %}
+        Color-Do Home
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'colordo/styles.css' %}" />
+    {% block styles %}
+      <style></style>
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>
