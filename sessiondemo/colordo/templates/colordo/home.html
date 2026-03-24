@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block styles %}
-    <style>
+<style>
     body {
-      background-color: {{bg_color}};
-      font-family: sans-serif;
+      background-color: {{ bg_color }};
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       transition: background-color 0.5s ease;
       display: flex;
       flex-direction: column;
@@ -30,7 +30,7 @@
     ul {
       text-align: left;
     }
-    </style>
+  </style>
 {% endblock %}
 
 {% block content %}
@@ -40,7 +40,7 @@
     <p>Current background color: {{ bg_color }}</p>
     <form action="{% url 'change_color' %}" method="post">
       {% csrf_token %}
-      <label for="color">Enter Hex Code:</label>
+      <label for="color">Choose a Color:</label>
       <input type="color" id="background-color" name="color" placeholder="#65cb88" required />
       <button type="submit">Update Theme</button>
     </form>
@@ -48,19 +48,28 @@
 
   <div class="card todo-card">
         <h1>Todo List</h1>
-        <form action="" method="post">
+        <form action="{% url 'add_task' %}" method="post">
           {% csrf_token %}
           <input type="text" name="task_text" placeholder="Enter a new task..." required />
         <button type="submit">Add Task</button>
         </form>
 
         <ul>
-        {% for task in tasks %}
-         <li>{{ task.text }}</li>
-        {% empty %}
-         <li>No tasks yet!</li>
+        {% for task in todo_list %}
+         <li>
+            {{ task }}
+            <form action="{% url 'delete_task' forloop.counter0 %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit">X</button>
+            </form>
+        </li>
          {% endfor %}
-    </div>
+        </ul>
+        <form action="{% url 'reset_session' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Reset Session</button>
+        </form>
+  </div>
 
   <!-- TODO: Add reset button -->
 {% endblock %}
