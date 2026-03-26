@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProfileList</title>
+    <link rel="stylesheet" href="{% static 'profiles/profile_styles.css' %}" />
+  </head>
+  <body>
+    {% for profile in profiles %}
+      <div>
+        <h2>{{ profile.name }}</h2>
+        <img src="{{ profile.image.url }}" alt="{{ profile.name }}" style="max-width: 200px;" />
+      </div>
+    {% endfor %}
+  </body>
+</html>

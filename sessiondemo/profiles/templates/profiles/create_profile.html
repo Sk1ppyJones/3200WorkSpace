@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="{% static 'profiles/profile_styles.css' %}" />
   </head>
   <body>
+    <h1>Create Profile - <a href="{% url 'user-profiles' %}">View All Profiles</a></h1>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      <input type="file" name="image" />
-      <button type="submit">Upload</button>
+      {{ form.as_p }}
+      <button type="submit">Create Profile</button>
     </form>
   </body>
 </html>
