@@ -11,7 +11,40 @@
         <small>By {{ post.author }} — {{ post.published_date|date:'F j, Y' }}</small>
       </p>
     </header>
-    <section>{{ post.content|linebreaks }}</section>
+    <section>
+      {{ post.content|linebreaks }}
+      <form action="{% url 'read-later' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{ post.id }}" />
+        <input type="hidden" name="next" value="{{ request.path }}" />
+        <button type="submit">
+          {% if saved_for_later %}
+            Remove from Read Later
+          {% else %}
+            Read Later
+          {% endif %}
+        </button>
+      </form>
+    </section>
+    <section>
+      <h2>Comments</h2>
+      {% for comment in comments %}
+        <div class="comment">
+          <p>
+            <strong>{{ comment.user_name }}</strong> said:
+          </p>
+          <p>{{ comment.text }}</p>
+        </div>
+      {% empty %}
+        <p>No comments yet.</p>
+      {% endfor %}
+      <h3>Leave a Comment</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Submit Comment</button>
+      </form>
+    </section>
     <footer>
       <p>
         Tags:{% for tag in post.tags.all %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Read Later
+{% endblock %}
+
+{% block content %}
+  <section class="all-posts">
+    <h2>Saved Posts</h2>
+
+    {% if has_posts %}
+      <ul>
+        {% for post in posts %}
+          <li>
+            <a href="{% url 'post-details' post.slug %}">
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.content|truncatechars:200 }}</p>
+              <small>{{ post.published_date|date:'F j, Y' }} — {{ post.author }}</small>
+            </a>
+            <form action="{% url 'read-later' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="post_id" value="{{ post.id }}" />
+              <input type="hidden" name="next" value="{% url 'read-later' %}" />
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You do not have any saved posts yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
